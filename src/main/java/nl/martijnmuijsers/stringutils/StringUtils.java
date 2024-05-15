@@ -1,4 +1,4 @@
-package martijn.stringutils;
+package nl.martijnmuijsers.stringutils;
 
 import java.util.ArrayList;
 import java.util.List;
