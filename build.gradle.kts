@@ -5,6 +5,7 @@ plugins {
     `maven-publish`
     alias(libs.plugins.ktlint)
     alias(libs.plugins.lombok)
+    alias(libs.plugins.nebula.release)
     alias(libs.plugins.spotless)
     alias(libs.plugins.yaml.validator)
 }
@@ -16,7 +17,6 @@ repositories {
 }
 
 group = "nl.martijnmuijsers"
-version = "1.0.2"
 description = "A personal Java library containing utilities for strings."
 
 object FileHeader {

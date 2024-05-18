@@ -20,10 +20,19 @@ jobs:
           distribution: 'temurin'
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
-      - name: Setup Gradle
+      - name: Set semantic version
         uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
         with:
-          arguments: build --stacktrace
+          arguments: final --stacktrace
+      - name: Build JAR
+        uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+        with:
+          arguments: jar --stacktrace
+      - name: Upload JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.event.repository.name }} JAR
+          path: build/libs/${{ github.event.repository.name }}-*.jar
       - name: Publish to GitHub Packages
         uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
         with:
