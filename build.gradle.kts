@@ -17,7 +17,7 @@ repositories {
 
 group = "nl.martijnmuijsers"
 version = "1.0.2"
-description = "Martijn's string utilities"
+description = "A personal Java library containing utilities for strings."
 
 object FileHeader {
     const val AUTHOR = "Martijn Muijsers <martijnmuijsers@live.nl>"
