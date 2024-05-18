@@ -1,6 +1,9 @@
 name: Submit dependency graph
 
-on: push
+on:
+  push:
+    branches:
+      - '**'
 
 jobs:
   generate-and-submit:
