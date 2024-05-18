@@ -1,0 +1,24 @@
+version: 2
+updates:
+  - package-ecosystem: gradle
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "05:30"
+      timezone: Europe/Amsterdam
+    # https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#labels
+    labels:
+      - "dependabot"
+      - "dependencies"
+    commit-message:
+      prefix: "build"
+      include: "scope"
+    open-pull-requests-limit: 999999
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: saturday
+      time: "02:00"
+      timezone: Europe/Amsterdam
+    open-pull-requests-limit: 999999

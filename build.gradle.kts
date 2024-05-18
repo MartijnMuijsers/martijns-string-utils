@@ -64,5 +64,5 @@ spotless {
 }
 
 yamlValidator {
-    searchPaths = listOf(".github/workflows/")
+    searchPaths = listOf(".github", ".github/workflows/")
 }
