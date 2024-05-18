@@ -10,12 +10,14 @@ concurrency:
 
 jobs:
 
-  lint:
+  check:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         gradle-task:
+          - test
+          - validateYaml
           - spotlessJavaCheck
           - ktlintKotlinScriptCheck
     steps:

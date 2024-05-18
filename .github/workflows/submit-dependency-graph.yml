@@ -3,7 +3,6 @@ name: Submit dependency graph
 on: push
 
 jobs:
-
   generate-and-submit:
     if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest

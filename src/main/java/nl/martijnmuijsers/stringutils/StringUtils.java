@@ -1,5 +1,5 @@
 /*
- * © Martijn Muijsers (martijnmuijsers@live.nl) 2018-2024.
+ * © Martijn Muijsers <martijnmuijsers@live.nl> 2018-2024.
  * Licensed under AGPLv3.
  */
 package nl.martijnmuijsers.stringutils;

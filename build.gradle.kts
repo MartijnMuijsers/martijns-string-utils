@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.ktlint)
     alias(libs.plugins.lombok)
     alias(libs.plugins.spotless)
+    alias(libs.plugins.yaml.validator)
 }
 
 repositories {
@@ -18,15 +19,32 @@ group = "nl.martijnmuijsers"
 version = "1.0.1"
 description = "Martijn's string utilities"
 
+object FileHeader {
+    const val AUTHOR = "Martijn Muijsers <martijnmuijsers@live.nl>"
+    const val CREATION_YEAR = "2018"
+    const val LICENSE_TEXT = "Licensed under AGPLv3."
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(libs.versions.java.get())
+    }
+}
+
+tasks.withType<JavaCompile> {
+    options.encoding = Charsets.UTF_8.name()
+    options.release = libs.versions.java.get().toInt()
+}
+
+tasks.withType<Javadoc> {
+    options.encoding = Charsets.UTF_8.name()
+}
+
 publishing {
     publications.create<MavenPublication>("maven") {
         from(components["java"])
     }
 }
-
-val author = "Martijn Muijsers (martijnmuijsers@live.nl)"
-val creationYear = "2018"
-val license = "Licensed under AGPLv3."
 
 spotless {
     java {
@@ -34,23 +52,17 @@ spotless {
         removeUnusedImports()
         cleanthat()
         palantirJavaFormat()
-        licenseHeader("/*\n * © $author $creationYear-${Year.now()}.\n * $license\n */")
+        licenseHeader(
+            """
+            /*
+             * © ${FileHeader.AUTHOR} ${FileHeader.CREATION_YEAR}-${Year.now()}.
+             * ${FileHeader.LICENSE_TEXT}
+             */
+            """.trimIndent(),
+        )
     }
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
-}
-
-tasks {
-    withType<JavaCompile> {
-        options.encoding = Charsets.UTF_8.name()
-        options.release.set(21)
-    }
-
-    withType<Javadoc> {
-        options.encoding = Charsets.UTF_8.name()
-    }
+yamlValidator {
+    searchPaths = listOf(".github/workflows/")
 }

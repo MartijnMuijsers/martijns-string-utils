@@ -1,9 +1,12 @@
 [versions]
+java = "21"
 ktlint = "12.1.1"
 lombok-plugin = "8.6"
 spotless = "6.25.0"
+yaml-validator = "1.5.0"
 
 [plugins]
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 lombok = { id = "io.freefair.lombok", version.ref = "lombok-plugin" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+yaml-validator = { id = "at.zierler.yamlvalidator", version.ref = "yaml-validator" }
