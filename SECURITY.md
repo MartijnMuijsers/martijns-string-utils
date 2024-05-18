@@ -7,5 +7,5 @@ any older versions are no longer supported.
 
 ## Reporting a Vulnerability
 
-To report a vulnerability, please send an e-mail to
-martijnmuijsers@live.nl.
+To report a vulnerability, please use the "Security > Report a vulnerability"
+button on GitHub, or send an e-mail to martijnmuijsers@live.nl.
