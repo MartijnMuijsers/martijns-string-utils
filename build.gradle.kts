@@ -16,7 +16,6 @@ repositories {
 }
 
 group = "nl.martijnmuijsers"
-version = "1.0.2"
 description = "A personal Java library containing utilities for strings."
 
 object FileHeader {
