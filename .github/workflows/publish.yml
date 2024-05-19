@@ -21,23 +21,23 @@ jobs:
           distribution: 'temurin'
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
+      - name: Set semantic version
+        uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+        with:
+          arguments: final --stacktrace
       - name: Semantic release
-        uses: cycjimmy/semantic-release-action@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Build JAR
-        if: steps.semantic.outputs.new_release_published == 'true'
         uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
         with:
           arguments: jar --stacktrace
       - name: Upload JAR
-        if: steps.semantic.outputs.new_release_published == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.repository.name }} JAR
           path: build/libs/${{ github.event.repository.name }}-*.jar
       - name: Publish to GitHub Packages
-        if: steps.semantic.outputs.new_release_published == 'true'
         uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
         with:
           arguments: publish --stacktrace
