@@ -48,3 +48,7 @@ gradle-app.setting
 !gradle-wrapper.jar
 !gradle-wrapper.properties
 .gradletasknamecache
+
+# Nebula
+settings.xml
+toolchains.xml
