@@ -2,7 +2,7 @@
 java = "21"
 ktlint = "12.1.1"
 lombok-plugin = "8.6"
-nebula-release = "19.0.9"
+nebula-release = "19.0.10"
 spotless = "6.25.0"
 yaml-validator = "1.5.0"
 
