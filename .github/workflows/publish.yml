@@ -26,11 +26,11 @@ jobs:
           git config --global user.email "martijnmuijsers@live.nl"
           git config --global user.name "Martijn Muijsers via GitHub Actions"
       - name: Set semantic version
-        uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+        uses: gradle/actions/setup-gradle@60851f5fb206ba543d7f2a75652c3a868ccc0264 # v3.1.0
         with:
           arguments: final --stacktrace
       - name: Build JAR
-        uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+        uses: gradle/actions/setup-gradle@60851f5fb206ba543d7f2a75652c3a868ccc0264 # v3.1.0
         with:
           arguments: jar --stacktrace
       - name: Upload JAR
@@ -39,7 +39,7 @@ jobs:
           name: ${{ github.event.repository.name }} JAR
           path: build/libs/${{ github.event.repository.name }}-*.jar
       - name: Publish to GitHub Packages
-        uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+        uses: gradle/actions/setup-gradle@60851f5fb206ba543d7f2a75652c3a868ccc0264 # v3.1.0
         with:
           arguments: publish --stacktrace
         env:
